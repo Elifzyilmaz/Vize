@@ -51,3 +51,9 @@ test_that("Test : Year adlı sütun numeric değerlerden oluşmalıdır", {
 test_that("idx değişkeni integer olmalıdır", {
   testthat::expect_true(is.integer(idx))
 })
+
+test_that("BONUS Test : finalResult adlı değiken vardır, bir data.frame’dir, 3 sütundan oluşmalıdır ve sütün isimleri sırasıyla Longitude, Latitude ve Year olmalıdır", {
+  testthat::expect_true(exists("finalResult", envir = .GlobalEnv))
+  testthat::expect_true(is.data.frame(finalResult))
+  testthat::expect_equal(names(finalResult), c("Longitude", "Latitude", "Year"))
+})

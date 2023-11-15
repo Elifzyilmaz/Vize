@@ -11,3 +11,4 @@ maps$Longitude <- as.numeric(maps$Longitude)
 maps$Latitude <- as.numeric(maps$Latitude)
 hist(maps$Year, breaks = 10, main = "Histogram of Years", xlab = "Year", col = "lightblue")
 maps$Longitude[idx] <- maps$Longitude[idx] * -1
+finalResult <- maps[c("Longitude", "Latitude", "Year")]
