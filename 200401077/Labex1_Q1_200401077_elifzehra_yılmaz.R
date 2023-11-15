@@ -1,0 +1,13 @@
+dosya_url <- "https://raw.githubusercontent.com/scizmeli/Red/master/MapsThatChangedOurWorld_StoryMap_Data.csv"
+dosya_isim <- "MapsThatChangedOurWorld_StoryMap_Data.csv"
+download.file(dosya_url, destfile = dosya_isim, method = "auto")
+maps <- read.csv(dosya_isim, sep = ";", header = TRUE)
+print(dim(maps))
+maps$Latitude <- as.numeric(gsub("N", "", maps$Latitude))
+idx <- grep("W", maps$Longitude)
+maps$Longitude <- as.numeric(gsub("[EW]", "", maps$Longitude))
+maps$Year <- as.numeric(gsub("AD", "", maps$Year))
+maps$Longitude <- as.numeric(maps$Longitude)
+maps$Latitude <- as.numeric(maps$Latitude)
+hist(maps$Year, breaks = 10, main = "Histogram of Years", xlab = "Year", col = "lightblue")
+maps$Longitude[idx] <- maps$Longitude[idx] * -1
